@@ -20,7 +20,7 @@ setInterval(async () => {
     `https://api.bilibili.com/x/relation/stat?vmid=${uid}&jsonp=jsonp`,
   );
   const data = await res.json();
-  let diffStr = "";
+  let diffStr: string;
   let colorFunc = yellow;
   afterFollower = data.data.follower;
   if (afterFollower == beforeFollower) {
@@ -29,7 +29,7 @@ setInterval(async () => {
   } else if (afterFollower > beforeFollower) {
     colorFunc = green;
     diffStr = `+${afterFollower - beforeFollower}`;
-  } else if (afterFollower < beforeFollower) {
+  } else {
     colorFunc = red;
     diffStr = `${afterFollower - beforeFollower}`;
   }

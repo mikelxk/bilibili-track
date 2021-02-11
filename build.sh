@@ -1,0 +1,1 @@
+deno install --unstable --allow-net --import-map=import_map.json -f --root . mod.ts

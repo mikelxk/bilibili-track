@@ -18,6 +18,11 @@ you can also run
 ./lex.sh
 ```
 
+## Install:
+```shell
+./build.sh
+```
+will defaultly generate an executable at `./bin`
 ## TODO:
 
 - ~~add color~~
