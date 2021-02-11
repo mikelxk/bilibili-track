@@ -1,0 +1,23 @@
+{
+  "name": "bilibili-fancount",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikelxk/bilibili-fancount.git"
+  },
+  "author": "mike",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikelxk/bilibili-fancount/issues"
+  },
+  "homepage": "https://github.com/mikelxk/bilibili-fancount#readme",
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
