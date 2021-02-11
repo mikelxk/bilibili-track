@@ -4,7 +4,7 @@ import { readLines } from "std/io/bufio.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
 const args = parse(Deno.args);
 const uid = args.u || (await promptUid("Enter Uid:")) || 2; //uncle's uid
-const interval = args.i || 5000;//defaults to 5s
+const interval = args.i || 5000; //defaults to 5s
 async function promptUid(question: string) {
   console.log(question);
   for await (const line of readLines(Deno.stdin)) {
