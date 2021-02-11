@@ -1,11 +1,9 @@
 import { createInterface } from "readline";
 import axios from "axios";
+let myArgs = process.argv.slice(2);
 const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
-});
-rl.question("up uid? : ", async (uid) => {
-  await loopFunc(uid);
 });
 const loopFunc = async (uid, interval = 5000) => {
   const apiUrl = `https://api.bilibili.com/x/relation/stat?vmid=${uid}&jsonp=jsonp`;
@@ -24,3 +22,10 @@ const loopFunc = async (uid, interval = 5000) => {
     prevFollower = newFollower;
   }, interval);
 };
+if (myArgs) {
+    await loopFunc(myArgs[0]);
+} else {
+  rl.question("up uid? : ", async (uid) => {
+    await loopFunc(uid);
+  });
+}
