@@ -4,7 +4,7 @@ const rl = createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-rl.question("up uid? :", async (uid) => {
+rl.question("up uid? : ", async (uid) => {
   await loopFunc(uid);
 });
 const loopFunc = async (uid, interval = 5000) => {
@@ -12,7 +12,15 @@ const loopFunc = async (uid, interval = 5000) => {
   let prevFollower = 0;
   setInterval(async () => {
     let newFollower = await (await axios.get(apiUrl)).data.data.follower;
-    console.log(`Followers:${newFollower}, ${prevFollower < newFollower ? '+' : '-'}${Math.abs(newFollower - prevFollower)}`);
+    console.log(
+      `Followers: ${newFollower}, ${
+        prevFollower == newFollower
+          ? "~"
+          : prevFollower < newFollower
+          ? `+${newFollower - prevFollower}`
+          : newFollower - prevFollower
+      }`
+    );
     prevFollower = newFollower;
   }, interval);
 };
