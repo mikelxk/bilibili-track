@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/mikelxk/bilibili-fancount#readme",
   "dependencies": {
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "chalk": "^4.1.0"
   }
 }

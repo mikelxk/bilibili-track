@@ -1,4 +1,5 @@
 import { createInterface } from "readline";
+import chalk from "chalk";
 import axios from "axios";
 let myArgs = process.argv.slice(2);
 const rl = createInterface({
@@ -13,17 +14,17 @@ const loopFunc = async (uid, interval = 5000) => {
     console.log(
       `Followers: ${newFollower}, ${
         prevFollower == newFollower
-          ? "~"
+          ? chalk.yellow("~")
           : prevFollower < newFollower
-          ? `+${newFollower - prevFollower}`
-          : newFollower - prevFollower
+          ? chalk.green(`+${newFollower - prevFollower}`)
+          : chalk.red(newFollower - prevFollower)
       }`
     );
     prevFollower = newFollower;
   }, interval);
 };
 if (myArgs) {
-    await loopFunc(myArgs[0]);
+  await loopFunc(myArgs[0]);
 } else {
   rl.question("up uid? : ", async (uid) => {
     await loopFunc(uid);
