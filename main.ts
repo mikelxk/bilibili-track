@@ -1,7 +1,7 @@
 import { parse } from "https://deno.land/std/flags/mod.ts";
 import { readLines } from "https://deno.land/std/io/bufio.ts";
-import * as Colors from "https://deno.land/std@0.86.0/fmt/colors.ts";
-let args = parse(Deno.args);
+import { green, red, yellow } from "https://deno.land/std@0.86.0/fmt/colors.ts";
+const args = parse(Deno.args);
 let uid = 2; //uncle's uid
 let interval = 5000;
 async function promptUid(question: string) {
@@ -21,25 +21,24 @@ if (args.i) {
 console.log(`Uid : ${uid}`);
 let beforeFollower = 0,
   afterFollower = 0;
-let numColor = "black";
 setInterval(async () => {
   const res = await fetch(
-    `https://api.bilibili.com/x/relation/stat?vmid=${uid}&jsonp=jsonp`
+    `https://api.bilibili.com/x/relation/stat?vmid=${uid}&jsonp=jsonp`,
   );
   let data = await res.json();
   let diffStr = "";
+  let colorFunc = yellow;
   afterFollower = data.data.follower;
   if (afterFollower == beforeFollower) {
-    numColor = "yellow";
+    colorFunc = yellow;
     diffStr = "~";
   } else if (afterFollower > beforeFollower) {
-    numColor = "green";
+    colorFunc = green;
     diffStr = `+${afterFollower - beforeFollower}`;
   } else if (afterFollower < beforeFollower) {
-    numColor = "red";
+    colorFunc = red;
     diffStr = `${afterFollower - beforeFollower}`;
   }
-  //@ts-ignore
-  console.log(Colors[numColor](`${afterFollower} ${diffStr}`));
+  console.log(`${new Date().toLocaleString()} : `,colorFunc(`${afterFollower} ${diffStr}`));
   beforeFollower = afterFollower;
 }, interval);
