@@ -1,11 +1,14 @@
-# Track Bilibili followers
+# Track Bilibili followers V2
+## Switched to deno and ts
 ## Usage
 ```shell
-npm run start $uuid
+npm run start -u $uuid -i $interval
 ```
+interval defaults to 5s
+
 i.e
 ```shell
-npm run start 777536
+npm start -- -u 777536
 ```
 or directly
 ```shell

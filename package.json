@@ -1,25 +1,13 @@
 {
   "name": "bilibili-fancount",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "",
-  "main": "index.mjs",
+  "main": "main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.mjs",
-    "lex": " npm start 777536"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mikelxk/bilibili-fancount.git"
+    "start": "deno run --allow-net main.ts",
+    "lex":"deno run --allow-net main.ts -u 777536"
   },
   "author": "mike",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mikelxk/bilibili-fancount/issues"
-  },
-  "homepage": "https://github.com/mikelxk/bilibili-fancount#readme",
-  "dependencies": {
-    "axios": "^0.21.1",
-    "chalk": "^4.1.0"
-  }
+  "license": "ISC"
 }
