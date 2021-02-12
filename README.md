@@ -12,27 +12,19 @@
 ./mod.ts -u $uuid -i $interval
 ```
 
-you can also run
+or
 
 ```shell
-./lex.sh
+deno run --unstable -A --import-map=import_map.json mod.ts
 ```
 
 ## Build:
 
-(win)
-
 ```shell
-./build.cmd
+deno run -A ./scripts/build.ts
 ```
 
-(mac && linux)
-
-```shell
-./build.sh
-```
-
-will defaultly generate an executable at `./bin`
+will generate executable
 
 ## TODO:
 
