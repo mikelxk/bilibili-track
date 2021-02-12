@@ -2,8 +2,6 @@ name: Publish
 
 on:
   push:
-    tags:
-      - "*"
 
 jobs:
   build:
@@ -12,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        deno: ["v1.x", "nightly"]
+        deno: "nightly"
         os: [macOS-latest, windows-latest, ubuntu-latest]
 
     steps:
