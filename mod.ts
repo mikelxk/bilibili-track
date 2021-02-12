@@ -3,7 +3,7 @@ import { parse } from "std/flags/mod.ts";
 import { readLines } from "std/io/bufio.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
 const args = parse(Deno.args);
-const uid = args.u || (await promptUid("Enter Uid:")) || 2; //uncle's uid
+const uid: number = args.u || (await promptUid("Enter Uid:")) || 2; //uncle's uid
 const interval = args.i || 5000; //defaults to 5s
 async function promptUid(question: string) {
   console.log(question);
@@ -25,7 +25,7 @@ setInterval(async () => {
   afterFollower = data.data.follower;
   if (afterFollower == beforeFollower) {
     colorFunc = yellow;
-    diffStr = "~";
+    diffStr = "~~";
   } else if (afterFollower > beforeFollower) {
     colorFunc = green;
     diffStr = `+${afterFollower - beforeFollower}`;

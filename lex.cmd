@@ -1,0 +1,1 @@
+deno run -A --unstable --import-map=import_map.json mod.ts

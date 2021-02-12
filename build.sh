@@ -1,1 +1,1 @@
-deno compile --unstable --allow-net --import-map=import_map.json  mod.ts
+deno compile --unstable --lite --allow-net --import-map=import_map.json  mod.ts
