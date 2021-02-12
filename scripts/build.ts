@@ -5,6 +5,8 @@ const p = Deno.run({
     "--unstable",
     "--lite",
     "-A",
+    "--output",
+    `fancount-${Deno.build.os}`,
     "--import-map=import_map.json",
     "mod.ts",
   ],

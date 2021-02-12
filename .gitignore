@@ -1,4 +1,5 @@
 node_modules
 /bin
-/bilibili-fancount.exe
-/bilibili-fancount
+/fancount-windows.exe
+/fancount-linux
+/fancount-darwin
