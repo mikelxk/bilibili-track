@@ -10,9 +10,9 @@ OPTIONS:
 
     --av value, -a             track a video's play count by its av number
 
-    --diff boolean, -d         only show diff or not (default: true)
+    --diff boolean, -d         only show diff or not (default : true)
 
-    --interval miliseconds, -i interval between each fetch
+    --interval miliseconds, -i interval between each fetch (default : 5000ms)
 ```
 
 ## Usage
@@ -30,14 +30,18 @@ OPTIONS:
 ```shell
 deno run --unstable -A --import-map=import_map.json mod.ts
 ```
-
+## Install
+```shell
+deno install --allow-run -f --root . .\scripts\run.ts
+```
+will generate a .bat or .shell file under `./bin` to run app
 ## Build:
 
 ```shell
 deno run -A ./scripts/build.ts
 ```
 
-will generate executable
+will generate executable under `./` which includes the runtime
 
 ## TODO:
 
