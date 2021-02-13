@@ -1,15 +1,13 @@
 #!/usr/bin/env -S deno run --allow-run
-const build = Deno.run({
+const run = Deno.run({
   cmd: [
     "deno",
-    "compile",
+    "run",
     "--unstable",
-    "--lite",
     "--allow-net",
-    "--output",
-    `bili-track`,
     "--import-map=import_map.json",
     "mod.ts",
+    ...Deno.args,
   ],
 });
-await build.status();
+await run.status();

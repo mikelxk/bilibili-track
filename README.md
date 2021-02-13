@@ -4,11 +4,16 @@
 
 ## Params
 
--u uuid watch a up's followers count
+```shell
+OPTIONS:
+    --uid value, -u            track a up's followers count by its uid
 
--a av watch a video's play count
+    --av value, -a             track a video's play count by its av number
 
--i interval set interval between each fetch
+    --diff boolean, -d         only show diff or not (default: true)
+
+    --interval miliseconds, -i interval between each fetch
+```
 
 ## Usage
 

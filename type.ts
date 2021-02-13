@@ -1,13 +1,13 @@
-export type WatchType = "uuid" | "av";
+export type WatchType = "uid" | "av";
 export class Api {
   parameter?: number;
-  type: WatchType;
+  watchType: WatchType;
   url = "";
   constructor(type: WatchType, param?: number) {
     this.parameter = param;
-    this.type = type;
+    this.watchType = type;
     switch (type) {
-      case "uuid":
+      case "uid":
         this.url =
           `https://api.bilibili.com/x/relation/stat?vmid=${this.parameter}&jsonp=jsonp`;
         break;
@@ -19,16 +19,19 @@ export class Api {
         throw new Error("no param");
     }
   }
+/**
+ * get data according to watchType
+ */
   async getCount(): Promise<number> {
     const res = await fetch(this.url);
     const json = await res.json();
-    switch (this.type) {
-      case "uuid":
+    switch (this.watchType) {
+      case "uid":
         return json.data.follower;
       case "av":
         return json.data.view;
       default:
-        return json.data.follower;
+        throw new Error("unknow type");
     }
   }
 }
