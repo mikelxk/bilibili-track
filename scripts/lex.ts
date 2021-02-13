@@ -9,6 +9,7 @@ const lex = Deno.run({
     "mod.ts",
     "-u",
     "777536",
+    ...Deno.args,
   ],
 });
 await lex.status();

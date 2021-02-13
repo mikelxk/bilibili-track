@@ -54,3 +54,4 @@ will generate executable under `./` which includes the runtime
 - ~~add color~~
 - ~~add more options in cli(i.e interval)~~
 - add graph
+- use a smarter arg parser
