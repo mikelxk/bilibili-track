@@ -1,5 +1,3 @@
 node_modules
 /bin
-/fancount-windows.exe
-/fancount-linux
-/fancount-darwin
+/fancount*
