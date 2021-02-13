@@ -1,18 +1,23 @@
-# Track Bilibili followers V2
+# Track Bilibili V2
+## Track bilibili up's followers and video's views
+## Params
+  -u uuid     watch a up's followers count
 
-## Switched to deno and ts
+  -a av       watch a video's play count
+
+  -i interval set interval between each fetch
 
 ## Usage
 
 [Download deno](https://deno.land/)
 
-- directly run the ts file
+- directly run the ts file (Linux and Mac)
 
 ```shell
 ./mod.ts -u $uuid -i $interval
 ```
 
-or
+- or (Win)
 
 ```shell
 deno run --unstable -A --import-map=import_map.json mod.ts

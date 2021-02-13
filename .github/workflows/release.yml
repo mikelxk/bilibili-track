@@ -14,14 +14,14 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: fancount
-            asset_name: fancount-linux-amd64
+            artifact_name: biliCount
+            asset_name: biliCount-linux-amd64
           - os: windows-latest
-            artifact_name: fancount.exe
-            asset_name: fancount-windows-amd64
+            artifact_name: biliCount.exe
+            asset_name: biliCount-windows-amd64
           - os: macos-latest
-            artifact_name: fancount
-            asset_name: fancount-macos-amd64
+            artifact_name: biliCount
+            asset_name: biliCount-macos-amd64
 
     steps:
       - name: Setup repo

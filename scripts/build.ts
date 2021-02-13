@@ -1,3 +1,4 @@
+#!/usr/bin/env -S deno run --allow-run
 const p = Deno.run({
   cmd: [
     "deno",
@@ -6,7 +7,7 @@ const p = Deno.run({
     "--lite",
     "-A",
     "--output",
-    `fancount`,
+    `biliCount`,
     "--import-map=import_map.json",
     "mod.ts",
   ],

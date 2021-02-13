@@ -1,3 +1,4 @@
+#!/usr/bin/env -S deno run --allow-run
 const lex = Deno.run({
   cmd: [
     "deno",

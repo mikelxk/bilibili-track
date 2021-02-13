@@ -1,41 +1,51 @@
 #!/usr/bin/env -S deno run --unstable --allow-net --import-map=import_map.json
 import { parse } from "std/flags/mod.ts";
-import { readLines } from "std/io/bufio.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
+import { Api, WatchType } from "./type.ts";
 const args = parse(Deno.args);
-const uid: number = args.u || (await promptUid("Enter Uid:")) || 2; //uncle's uid
-const interval = args.i || 5000; //defaults to 5s
-async function promptUid(question: string) {
-  console.log(question);
-  for await (const line of readLines(Deno.stdin)) {
-    return parseInt(line);
-  }
-}
+const uid: number | undefined = args.u;
+const av: number | undefined = args.a;
 
-console.log(`Uid : ${uid}`);
-let beforeFollower = 0,
-  afterFollower = 0;
+let watchType: WatchType;
+const interval = args.i || 5000; //defaults to 5s
+if ((uid && av) || !(uid || av)) {
+  man();
+}
+const param: number | undefined = uid || av;
+if (uid) {
+  watchType = "uuid";
+} else {
+  watchType = "av";
+}
+const api = new Api(watchType, param);
+console.log(`${api.type} : ${api.parameter}`);
+let numBefore = 0,
+  numAfter = 0;
 setInterval(async () => {
-  const res = await fetch(
-    `https://api.bilibili.com/x/relation/stat?vmid=${uid}&jsonp=jsonp`,
-  );
-  const data = await res.json();
+  numAfter = await api.getCount();
   let diffStr: string;
   let colorFunc = yellow;
-  afterFollower = data.data.follower;
-  if (afterFollower == beforeFollower) {
+  if (numAfter == numBefore) {
     colorFunc = yellow;
     diffStr = "~~";
-  } else if (afterFollower > beforeFollower) {
+  } else if (numAfter > numBefore) {
     colorFunc = green;
-    diffStr = `+${afterFollower - beforeFollower}`;
+    diffStr = `+${numAfter - numBefore}`;
   } else {
     colorFunc = red;
-    diffStr = `${afterFollower - beforeFollower}`;
+    diffStr = `${numAfter - numBefore}`;
   }
   console.log(
     `${new Date().toLocaleString()} : `,
-    colorFunc(`${afterFollower} ${diffStr}`),
+    colorFunc(`${numAfter} ${diffStr}`),
   );
-  beforeFollower = afterFollower;
+  numBefore = numAfter;
 }, interval);
+function man() {
+  console.log(`
+  -u uuid     watch a up's count
+  -a av       watch a video's count
+  -i interval set interval between each fetch
+  `);
+  Deno.exit(0);
+}
