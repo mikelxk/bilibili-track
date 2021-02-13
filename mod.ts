@@ -4,6 +4,10 @@ import { readLines } from "std/io/bufio.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
 import { Api, WatchType } from "./type.ts";
 const args = parse(Deno.args);
+const help = args.h || args.help;
+if (help) {
+  man();
+}
 const uid: number | undefined = args.u || args.uid;
 const av: number | undefined = args.a || args.av;
 const diffString: string = args.d ?? args.diff;
@@ -48,9 +52,16 @@ setInterval(async () => {
 }, interval);
 async function man() {
   console.log(`
-  -u uuid     watch a up's count
-  -a av       watch a video's count
-  -i interval set interval between each fetch
+  OPTIONS:
+      --uid value, -u            track a up's followers count by its uid
+
+      --av value, -a             track a video's play count by its av number
+
+      --diff boolean, -d         only show diff or not (default : false)
+
+      --interval miliseconds, -i interval between each fetch (default : 5000ms)
+
+      --help, -h                 show help
 
   Press enter to quit
   `);

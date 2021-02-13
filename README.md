@@ -13,6 +13,8 @@ OPTIONS:
     --diff boolean, -d         only show diff or not (default : false)
 
     --interval miliseconds, -i interval between each fetch (default : 5000ms)
+
+    --help, -h                 show help
 ```
 
 ## Usage
@@ -30,11 +32,15 @@ OPTIONS:
 ```shell
 deno run --unstable -A --import-map=import_map.json mod.ts
 ```
+
 ## Install
+
 ```shell
 deno install --allow-run -f --root . .\scripts\run.ts
 ```
+
 will generate a .bat or .shell file under `./bin` to run app
+
 ## Build:
 
 ```shell
