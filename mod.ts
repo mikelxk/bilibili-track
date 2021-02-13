@@ -51,6 +51,6 @@ async function man() {
   Press enter to quit
   `);
   for await (const _line of readLines(Deno.stdin)) {
-      Deno.exit(0);
+    Deno.exit(0);
   }
 }

@@ -5,7 +5,7 @@ const p = Deno.run({
     "compile",
     "--unstable",
     "--lite",
-    "-A",
+    "--allow-net",
     "--output",
     `bili-track`,
     "--import-map=import_map.json",

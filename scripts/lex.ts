@@ -4,7 +4,7 @@ const lex = Deno.run({
     "deno",
     "run",
     "--unstable",
-    "-A",
+    "--allow-net",
     "--import-map=import_map.json",
     "mod.ts",
     "-u",

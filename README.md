@@ -1,11 +1,14 @@
 # Track Bilibili V2
+
 ## Track bilibili up's followers and video's views
+
 ## Params
-  -u uuid     watch a up's followers count
 
-  -a av       watch a video's play count
+-u uuid watch a up's followers count
 
-  -i interval set interval between each fetch
+-a av watch a video's play count
+
+-i interval set interval between each fetch
 
 ## Usage
 
