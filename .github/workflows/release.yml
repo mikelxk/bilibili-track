@@ -42,4 +42,4 @@ jobs:
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
           overwrite: true
-          body: ${GITHUB_REF##*/}
+          body: ${{GITHUB_REF##*/}}
