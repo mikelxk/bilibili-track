@@ -42,4 +42,7 @@ jobs:
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
           overwrite: true
-          body: "This is my release text"
+          body: |
+            Changes in this Release
+            - First Change
+            - Second Change
