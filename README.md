@@ -10,7 +10,7 @@ OPTIONS:
 
     --av value, -a             track a video's play count by its av number
 
-    --diff boolean, -d         only show diff or not (default : true)
+    --diff boolean, -d         only show diff or not (default : false)
 
     --interval miliseconds, -i interval between each fetch (default : 5000ms)
 ```
