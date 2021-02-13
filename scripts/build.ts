@@ -7,7 +7,7 @@ const p = Deno.run({
     "--lite",
     "-A",
     "--output",
-    `biliCount`,
+    `bili-track`,
     "--import-map=import_map.json",
     "mod.ts",
   ],

@@ -14,14 +14,14 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: biliCount
-            asset_name: biliCount-linux
+            artifact_name: bili-track
+            asset_name: bili-track-linux
           - os: windows-latest
-            artifact_name: biliCount.exe
-            asset_name: biliCount-win.exe
+            artifact_name: bili-track.exe
+            asset_name: bili-track-win.exe
           - os: macos-latest
-            artifact_name: biliCount
-            asset_name: biliCount-mac
+            artifact_name: bili-track
+            asset_name: bili-track-mac
 
     steps:
       - name: Setup repo
