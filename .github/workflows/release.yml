@@ -15,13 +15,13 @@ jobs:
         include:
           - os: ubuntu-latest
             artifact_name: biliCount
-            asset_name: biliCount-linux-amd64
+            asset_name: biliCount-linux
           - os: windows-latest
             artifact_name: biliCount.exe
-            asset_name: biliCount-windows-amd64
+            asset_name: biliCount-win.exe
           - os: macos-latest
             artifact_name: biliCount
-            asset_name: biliCount-macos-amd64
+            asset_name: biliCount-mac
 
     steps:
       - name: Setup repo

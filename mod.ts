@@ -1,5 +1,6 @@
 #!/usr/bin/env -S deno run --unstable --allow-net --import-map=import_map.json
 import { parse } from "std/flags/mod.ts";
+import { readLines } from "std/io/bufio.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
 import { Api, WatchType } from "./type.ts";
 const args = parse(Deno.args);
@@ -9,7 +10,7 @@ const av: number | undefined = args.a;
 let watchType: WatchType;
 const interval = args.i || 5000; //defaults to 5s
 if ((uid && av) || !(uid || av)) {
-  man();
+  await man();
 }
 const param: number | undefined = uid || av;
 if (uid) {
@@ -41,11 +42,15 @@ setInterval(async () => {
   );
   numBefore = numAfter;
 }, interval);
-function man() {
+async function man() {
   console.log(`
   -u uuid     watch a up's count
   -a av       watch a video's count
   -i interval set interval between each fetch
+
+  Press enter to quit
   `);
-  Deno.exit(0);
+  for await (const _line of readLines(Deno.stdin)) {
+      Deno.exit(0);
+  }
 }
