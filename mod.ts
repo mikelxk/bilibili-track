@@ -8,8 +8,8 @@ const help = args.h || args.help;
 if (help) {
   man();
 }
-const uid: number | undefined = args.u || args.uid;
-const av: number | undefined = args.a || args.av;
+const uid: number = args.u || args.uid;
+const av: number = args.a || args.av;
 const diffString: string = args.d ?? args.diff;
 const diff = (diffString ?? true) == "true";
 let watchType: WatchType;
@@ -17,7 +17,7 @@ const interval = args.i || 5000; //defaults to 5s
 if ((uid && av) || !(uid || av)) {
   await man();
 }
-const param: number | undefined = uid || av;
+const param: number = uid || av;
 if (uid) {
   watchType = "uid";
 } else {

@@ -1,9 +1,9 @@
 export type WatchType = "uid" | "av";
 export class Api {
-  parameter?: number;
+  parameter = 0;
   watchType: WatchType;
   url = "";
-  constructor(type: WatchType, param?: number) {
+  constructor(type: WatchType, param: number) {
     this.parameter = param;
     this.watchType = type;
     switch (type) {
@@ -19,7 +19,7 @@ export class Api {
         throw new Error("no param");
     }
   }
-/**
+  /**
  * get data according to watchType
  */
   async getCount(): Promise<number> {
