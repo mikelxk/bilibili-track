@@ -2,7 +2,8 @@
 import { parse } from "std/flags/mod.ts";
 import { readLines } from "std/io/bufio.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
-import { Api, WatchType } from "./type.ts";
+import { WatchType } from "./type.ts";
+import { Api } from "./util.ts";
 const args = parse(Deno.args);
 const help = args.h || args.help;
 if (help) {
