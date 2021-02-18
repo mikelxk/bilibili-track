@@ -1,5 +1,5 @@
 import { WatchType } from "./type.ts";
-import { fetchJsonData } from "https://github.com/mikelxk/fetch-api/raw/main/mod.ts";
+import ky from "https://cdn.skypack.dev/ky?dts";
 export class Api {
   parameter = 0;
   watchType: WatchType;
@@ -24,7 +24,7 @@ export class Api {
  * get data according to watchType
  */
   async getCount(): Promise<number> {
-    const data = await fetchJsonData(this.url);
+    const { data } = await ky(this.url).json();
     switch (this.watchType) {
       case "uid":
         return data.follower;
