@@ -17,7 +17,7 @@ export class Api {
           `http://api.bilibili.com/archive_stat/stat?aid=${this.parameter}&type=jsonp`;
         break;
       default:
-        throw new Error("no param");
+        throw new TypeError("no param");
     }
   }
   /**

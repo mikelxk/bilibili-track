@@ -46,7 +46,7 @@ setInterval(async () => {
     diffStr = `${numChanged}`;
   }
   console.log(
-    `${new Date().toLocaleString()} : `,
+    `${new Date().toLocaleTimeString()} : `,
     colorFunc(`${numAfter} ${diffStr}`),
   );
   numBefore = numAfter;
