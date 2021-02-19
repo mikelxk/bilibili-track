@@ -2,8 +2,6 @@ name: Publish
 
 on:
   push:
-    tags:
-      - "*"
 
 jobs:
   build:
@@ -41,4 +39,4 @@ jobs:
           file: ${{ matrix.artifact_name }}
           asset_name: ${{ matrix.asset_name }}
           tag: ${{ github.ref }}
-          overwrite: true
+          overwrite: false

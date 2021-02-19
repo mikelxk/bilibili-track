@@ -1,5 +1,5 @@
 import { WatchType } from "./type.ts";
-import ky from "https://cdn.skypack.dev/ky?dts";
+import ky from "ky";
 export class Api {
   parameter = 0;
   watchType: WatchType;

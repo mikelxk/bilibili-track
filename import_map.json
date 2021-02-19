@@ -1,5 +1,6 @@
 {
   "imports": {
-    "std/": "https://deno.land/std@0.87.0/"
+    "std/": "https://deno.land/std@0.87.0/",
+    "ky": "https://cdn.skypack.dev/ky?dts"
   }
 }
