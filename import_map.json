@@ -1,6 +1,6 @@
 {
   "imports": {
     "std/": "https://deno.land/std@0.88.0/",
-    "ky": "https://cdn.skypack.dev/ky?dts"
+    "fetch-api": "https://raw.githubusercontent.com/mikelxk/fetch-api/main/mod.ts"
   }
 }

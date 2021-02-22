@@ -1,10 +1,10 @@
 import { WatchType } from "./type.ts";
-import ky from "ky";
+import { fetchJsonData } from "fetch-api";
 export class Api {
-  parameter = 0;
+  parameter: string | number;
   watchType: WatchType;
-  url = "";
-  constructor(type: WatchType, param: number) {
+  url: string;
+  constructor(type: WatchType, param: number | string) {
     this.parameter = param;
     this.watchType = type;
     switch (type) {
@@ -24,7 +24,7 @@ export class Api {
  * get data according to watchType
  */
   async getCount(): Promise<number> {
-    const { data } = await ky(this.url).json();
+    const data = await fetchJsonData(this.url);
     switch (this.watchType) {
       case "uid":
         return data.follower;
