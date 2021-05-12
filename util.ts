@@ -1,5 +1,5 @@
 import { WatchType } from "./type.ts";
-import { fetchJsonData } from "fetch-api";
+import { FetchJsonData } from "peto";
 export class Api {
   parameter: string | number;
   watchType: WatchType;
@@ -24,7 +24,7 @@ export class Api {
  * get data according to watchType
  */
   async getCount(): Promise<number> {
-    const data = await fetchJsonData(this.url);
+    const data = await FetchJsonData(this.url);
     switch (this.watchType) {
       case "uid":
         return data.follower;
