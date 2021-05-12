@@ -3,6 +3,7 @@ const build = Deno.run({
   cmd: [
     "deno",
     "compile",
+    "--unstable",
     "--allow-net",
     "--output",
     `bili-track`,
