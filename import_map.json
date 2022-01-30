@@ -1,6 +1,6 @@
 {
   "imports": {
-    "std/": "https://deno.land/std@0.96.0/",
+    "std/": "https://deno.land/std@0.123.0/",
     "peto": "https://raw.githubusercontent.com/mikelxk/peto/main/mod.ts"
   }
 }
