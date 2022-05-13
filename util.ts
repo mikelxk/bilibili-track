@@ -21,8 +21,8 @@ export class Api {
     }
   }
   /**
- * get data according to watchType
- */
+   * get data according to watchType
+   */
   async getCount(): Promise<number> {
     const data = await FetchJsonData(this.url);
     switch (this.watchType) {
