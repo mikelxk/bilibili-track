@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno run --allow-net --import-map=import_map.json
 import { parse } from "std/flags/mod.ts";
-import { readLines } from "std/io/buffer.ts";
+import { readLines } from "std/io/mod.ts";
 import { green, red, yellow } from "std/fmt/colors.ts";
 import { WatchType } from "./type.ts";
 import { Api } from "./util.ts";
