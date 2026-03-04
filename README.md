@@ -19,39 +19,40 @@ OPTIONS:
 
 ## Usage
 
-[Download deno](https://deno.land/)
+[Download Bun](https://bun.sh/)
 
-- directly run the ts file (Linux and Mac)
+- run via bun
 
 ```shell
-./mod.ts -u $uuid -i $interval
+bun run mod.ts -u $uuid -i $interval
 ```
 
-- or (Win)
+- or use predefined scripts
 
 ```shell
-deno run --unstable -A --import-map=import_map.json mod.ts
+bun run run:nanami
+bun run run:lex
 ```
 
 ## Install
 
-```shell
-deno install --allow-run -f --root . .\scripts\run.ts
-```
-
-will generate a .bat or .shell file under `./bin` to run app
-
-## Build:
+No external dependencies are required beyond Bun, but you can install type definitions using:
 
 ```shell
-deno run -A ./scripts/build.ts
+bun install
 ```
 
-will generate executable under `./` which includes the runtime
+## Build
+
+```shell
+bun run build
+```
+
+will generate a standalone executable under `./` named `bili-track` which includes the runtime.
 
 ## TODO:
 
 - ~~add color~~
 - ~~add more options in cli(i.e interval)~~
 - add graph
-- use a smarter arg parser
+- ~~use a smarter arg parser~~

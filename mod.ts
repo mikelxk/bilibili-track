@@ -1,38 +1,59 @@
-#!/usr/bin/env -S deno run --allow-net --import-map=import_map.json
-import { parse } from "std/flags/mod.ts";
-import { readLines } from "std/io/mod.ts";
-import { green, red, yellow } from "std/fmt/colors.ts";
+#!/usr/bin/env bun
+import { parseArgs } from "util";
+import readline from "readline/promises";
 import { WatchType } from "./type.ts";
 import { Api } from "./util.ts";
-const args = parse(Deno.args);
-const help = args.h || args.help;
+
+const green = (str: string | number) => `\x1b[32m${str}\x1b[0m`;
+const red = (str: string | number) => `\x1b[31m${str}\x1b[0m`;
+const yellow = (str: string | number) => `\x1b[33m${str}\x1b[0m`;
+
+const { values: args } = parseArgs({
+  args: Bun.argv.slice(2),
+  options: {
+    uid: { type: "string", short: "u" },
+    av: { type: "string", short: "a" },
+    diff: { type: "string", short: "d" },
+    interval: { type: "string", short: "i" },
+    help: { type: "boolean", short: "h" },
+  },
+  strict: false,
+});
+
+const help = args.help;
+
 if (import.meta.main) {
   if (help) {
-    man();
+    await man();
   }
-  const uid: number = args.u || args.uid;
-  const av: number = args.a || args.av;
-  const diffString: string = args.d ?? args.diff;
-  const diff = (diffString ?? true) == "true";
+  const uid = args.uid ? parseInt(args.uid) : undefined;
+  const av = args.av ? parseInt(args.av) : undefined;
+  const diffString: string | undefined = args.diff;
+  const diff = (diffString ?? "true") == "true";
   let watchType: WatchType;
-  const interval = args.i || 5000; //defaults to 5s
+  const interval = args.interval ? parseInt(args.interval) : 5000; //defaults to 5s
+
   if ((uid && av) || !(uid || av)) {
     await man();
   }
-  const param: number = uid || av;
+  const param = uid || av!;
+
   if (uid) {
     watchType = "uid";
   } else {
     watchType = "av";
   }
+
   const api = new Api(watchType, param);
   console.log(`${api.watchType} : ${api.parameter}`);
   let numBefore = 0;
+
   setInterval(async () => {
     const numAfter = await api.getCount();
     const numChanged = numAfter - numBefore;
     let diffStr: string;
     let colorFunc = yellow;
+
     if (numAfter == numBefore) {
       if (diff) {
         return;
@@ -53,6 +74,7 @@ if (import.meta.main) {
     numBefore = numAfter;
   }, interval);
 }
+
 async function man() {
   console.log(`
   OPTIONS:
@@ -68,7 +90,13 @@ async function man() {
 
   Press enter to quit
   `);
-  for await (const _line of readLines(Deno.stdin)) {
-    Deno.exit(0);
+
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  for await (const _line of rl) {
+    process.exit(0);
   }
 }

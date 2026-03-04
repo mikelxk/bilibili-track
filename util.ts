@@ -1,30 +1,33 @@
 import { WatchType } from "./type.ts";
-import { FetchJsonData } from "peto";
+
 export class Api {
   parameter: string | number;
   watchType: WatchType;
   url: string;
+
   constructor(type: WatchType, param: number | string) {
     this.parameter = param;
     this.watchType = type;
     switch (type) {
       case "uid":
-        this.url =
-          `https://api.bilibili.com/x/relation/stat?vmid=${this.parameter}&jsonp=jsonp`;
+        this.url = `https://api.bilibili.com/x/relation/stat?vmid=${this.parameter}&jsonp=jsonp`;
         break;
       case "av":
-        this.url =
-          `http://api.bilibili.com/archive_stat/stat?aid=${this.parameter}&type=jsonp`;
+        this.url = `http://api.bilibili.com/archive_stat/stat?aid=${this.parameter}&type=jsonp`;
         break;
       default:
         throw new TypeError("no param");
     }
   }
+
   /**
    * get data according to watchType
    */
   async getCount(): Promise<number> {
-    const data = await FetchJsonData(this.url);
+    const response = await fetch(this.url);
+    const json: any = await response.json();
+    const data = json.data;
+
     switch (this.watchType) {
       case "uid":
         return data.follower;

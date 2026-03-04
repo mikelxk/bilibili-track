@@ -25,13 +25,13 @@ jobs:
 
     steps:
       - name: Setup repo
-        uses: actions/checkout@v2
-      - name: Setup Deno
-        uses: denolib/setup-deno@master
+        uses: actions/checkout@v4
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          deno-version: v1.x
+          bun-version: latest
       - name: Build
-        run: deno task build
+        run: bun run build
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
         with:

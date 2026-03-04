@@ -1,13 +1,8 @@
-#!/usr/bin/env -S deno run --allow-run
-const run = Deno.run({
-  cmd: [
-    "deno",
-    "run",
-    "--unstable",
-    "--allow-net",
-    "--import-map=import_map.json",
-    "mod.ts",
-    ...Deno.args,
-  ],
+#!/usr/bin/env bun
+const proc = Bun.spawn(["bun", "run", "mod.ts", ...Bun.argv.slice(2)], {
+  stdin: "inherit",
+  stdout: "inherit",
+  stderr: "inherit",
 });
-await run.status();
+const exitCode = await proc.exited;
+process.exit(exitCode);
