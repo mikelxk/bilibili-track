@@ -1,0 +1,15 @@
+{
+  "name": "bilibili-track",
+  "version": "1.0.0",
+  "description": "track a up's followers count or a video's play count",
+  "main": "mod.ts",
+  "scripts": {
+    "run:nanami": "bun run mod.ts -u 434334701",
+    "run:lex": "bun run mod.ts -u 777536",
+    "build": "bun build --compile --outfile bili-track mod.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/bun": "latest"
+  }
+}
